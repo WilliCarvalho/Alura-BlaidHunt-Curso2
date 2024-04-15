@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0585fbbe6b316741907e3e3c74c0fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIManager: {fileID: 0}
   AudioManager: {fileID: 3552215947976564331}
 --- !u!1 &5532661943256001951
 GameObject:
@@ -220,6 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b18d807b37136488d3d9b5388d7f79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioMixer: {fileID: 0}
   SFXAudioSource: {fileID: 1324309397438294512}
   EnvironmentAudioSource: {fileID: 8415521052920565916}
   SFXConfigs:
@@ -237,6 +239,9 @@ MonoBehaviour:
     VolumeScale: 0.5
   - Type: 4
     AudioClip: {fileID: 8300000, guid: 57e48a578c4bd904c939c69d63499fa7, type: 3}
+    VolumeScale: 0.5
+  - Type: 5
+    AudioClip: {fileID: 8300000, guid: 06f0ca101c31f7d4da70f9cc2e71eb3f, type: 3}
     VolumeScale: 0.5
 --- !u!1 &9042996514928627522
 GameObject:
