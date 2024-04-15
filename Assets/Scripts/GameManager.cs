@@ -3,8 +3,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public InputManager InputManager { get; private set; }
+
+    public UIManager UIManager;
     public AudioManager AudioManager;
+    public InputManager InputManager { get; private set; }
 
     private void Awake()
     {
