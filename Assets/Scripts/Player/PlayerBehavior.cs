@@ -72,7 +72,7 @@ public class PlayerBehavior : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
         GameManager.Instance.AudioManager.PlaySFX(SFX.PlayerDeath);
-        GameManager.Instance.InputManager.DisablePlayerInput();
+        GameManager.Instance.InputManager.DisableGameplayInput();
     }
 
     private void Attack()
