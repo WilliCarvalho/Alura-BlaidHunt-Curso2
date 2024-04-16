@@ -1,12 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator), typeof(AudioSource))]
+[RequireComponent(typeof(Animator), typeof(AudioSource), typeof(BoxCollider2D))]
 public abstract class BaseEnemy : MonoBehaviour
 {
     protected Animator animator;
     protected AudioSource audioSource;
     protected Health health;
+
+    protected bool canAttack;
 
     protected virtual void Awake()
     {
@@ -16,6 +18,8 @@ public abstract class BaseEnemy : MonoBehaviour
 
         health.OnHurt += PlayHurtAnim;
         health.OnDead += HandleDeath;
+
+        canAttack = true;
     }
 
     protected abstract void Update();
@@ -24,6 +28,8 @@ public abstract class BaseEnemy : MonoBehaviour
     
     private void HandleDeath()
     {
+        canAttack = false;
+        GetComponent<Collider2D>().enabled = false;
         animator.SetTrigger("dead");
         StartCoroutine(DestroyEnemy(2));
     }
