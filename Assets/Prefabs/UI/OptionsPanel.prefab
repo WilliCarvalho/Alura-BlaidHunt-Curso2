@@ -607,6 +607,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6566754602652725595, guid: 4252707564f71f245a38e279d4a01bd1, type: 3}
+      propertyPath: m_text
+      value: "Som M\xFAsica"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -754,6 +758,10 @@ PrefabInstance:
     - target: {fileID: 5386291543746483657, guid: 4252707564f71f245a38e279d4a01bd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566754602652725595, guid: 4252707564f71f245a38e279d4a01bd1, type: 3}
+      propertyPath: m_text
+      value: Master Som
       objectReference: {fileID: 0}
     - target: {fileID: 7733422847733562161, guid: 4252707564f71f245a38e279d4a01bd1, type: 3}
       propertyPath: m_Name

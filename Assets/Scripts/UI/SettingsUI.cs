@@ -1,5 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SettingsUI : MonoBehaviour
@@ -16,7 +18,7 @@ public class SettingsUI : MonoBehaviour
 
     private void Start()
     {
-        backButton.onClick.AddListener(GameManager.Instance.UIManager.OpenMainMenu);
+        backButton.onClick.AddListener(ClosePanel);
         
         MasterVolumeSlider.onValueChanged.AddListener(OnMasterVolumeSliderChanged);
         SFXVolumeSlider.onValueChanged.AddListener(OnSFXVolumeSliderChanged);
@@ -29,6 +31,12 @@ public class SettingsUI : MonoBehaviour
         UpdatePercentageText(MasterVolumeSlider, MasterTextPercentage);
         UpdatePercentageText(SFXVolumeSlider, SFXTextPercentage);
         UpdatePercentageText(EnvironmentVolumeSlider, EnvironmentTextPercentage);
+    }
+
+    private void ClosePanel()
+    {
+        GameManager.Instance.AudioManager.PlaySFX(SFX.ButtonClick);
+        this.gameObject.SetActive(false);
     }
 
     private void UpdatePercentageText(Slider slider, TextMeshProUGUI text)
