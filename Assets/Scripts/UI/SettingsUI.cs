@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class SettingsUI : MonoBehaviour
 {
     [SerializeField] private Button backButton;
+
+    [SerializeField] private GameObject settingsFirstSelected;
     
     [SerializeField] private Slider MasterVolumeSlider;
     [SerializeField] private Slider SFXVolumeSlider;
@@ -15,6 +17,11 @@ public class SettingsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI MasterTextPercentage;
     [SerializeField] private TextMeshProUGUI SFXTextPercentage;
     [SerializeField] private TextMeshProUGUI EnvironmentTextPercentage;
+
+    private void OnEnable()
+    {
+        EventSystem.current.SetSelectedGameObject(settingsFirstSelected);
+    }
 
     private void Start()
     {
