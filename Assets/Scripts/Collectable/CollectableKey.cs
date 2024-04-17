@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class CollectableKey : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        Destroy(this.gameObject);
+        if (collider.CompareTag("Player"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
