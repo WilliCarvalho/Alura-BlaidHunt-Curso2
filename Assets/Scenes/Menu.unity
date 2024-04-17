@@ -253,7 +253,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.8470589, g: 0.7490196, b: 0.61960787, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -432,15 +432,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 972261835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe892c0a233458d4a80099866d6ebcc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 43f79d683c69076479b51a404bfe124f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OptionsPanel: {fileID: 589192261}
+  MenuPanel: {fileID: 1523754649}
   startButton: {fileID: 1638563591}
   optionsButton: {fileID: 66706754}
   exitButton: {fileID: 1017585097}
-  mainMenuFirsSelected: {fileID: 0}
-  OptionsPanel: {fileID: 589192261}
-  MenuPanel: {fileID: 1523754649}
+  mainMenuFirsSelected: {fileID: 174338181}
 --- !u!114 &1017585097 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8860312653672080132, guid: 026e9b3d366e4ab46841943646bc3099, type: 3}
@@ -507,7 +507,7 @@ PrefabInstance:
     - target: {fileID: 5712735112600617120, guid: e38ec728ff55658459f0c2024b23ad55, type: 3}
       propertyPath: UIManager
       value: 
-      objectReference: {fileID: 972261840}
+      objectReference: {fileID: 0}
     - target: {fileID: 8415521052920565916, guid: e38ec728ff55658459f0c2024b23ad55, type: 3}
       propertyPath: m_audioClip
       value: 
