@@ -7,6 +7,10 @@ public abstract class BaseEnemy : MonoBehaviour
     protected Animator animator;
     protected AudioSource audioSource;
     protected Health health;
+    
+    [Header("Effect properties")] 
+    [SerializeField] private ParticleSystem hitEffect;
+    [SerializeField] private ParticleSystem dieEffect;
 
     protected bool canAttack;
 
@@ -24,11 +28,16 @@ public abstract class BaseEnemy : MonoBehaviour
 
     protected abstract void Update();
 
-    private void PlayHurtAnim() => animator.SetTrigger("hurt");
+    private void PlayHurtAnim()
+    {
+        hitEffect.Play();
+        animator.SetTrigger("hurt");
+    }
     
     private void HandleDeath()
     {
         canAttack = false;
+        dieEffect.Play();
         GetComponent<Collider2D>().enabled = false;
         animator.SetTrigger("dead");
         StartCoroutine(DestroyEnemy(2));
