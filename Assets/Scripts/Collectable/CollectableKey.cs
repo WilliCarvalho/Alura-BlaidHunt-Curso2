@@ -6,6 +6,7 @@ public class CollectableKey : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
+            GameManager.Instance.UpdateKeysLeft();
             Destroy(this.gameObject);
         }
     }
