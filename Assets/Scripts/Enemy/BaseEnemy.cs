@@ -8,9 +8,8 @@ public abstract class BaseEnemy : MonoBehaviour
     protected AudioSource audioSource;
     protected Health health;
     
-    [Header("Effect properties")] 
-    [SerializeField] private ParticleSystem hitEffect;
-    [SerializeField] private ParticleSystem dieEffect;
+    [Header("FX properties")] 
+    [SerializeField] protected ParticleSystem hitParticle;
 
     protected bool canAttack;
 
@@ -20,7 +19,7 @@ public abstract class BaseEnemy : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         health = GetComponent<Health>();
 
-        health.OnHurt += PlayHurtAnim;
+        health.OnHurt += HandleHurt;
         health.OnDead += HandleDeath;
 
         canAttack = true;
@@ -28,18 +27,18 @@ public abstract class BaseEnemy : MonoBehaviour
 
     protected abstract void Update();
 
-    private void PlayHurtAnim()
+    private void HandleHurt()
     {
-        hitEffect.Play();
         animator.SetTrigger("hurt");
+        PlayHitParticle();
     }
     
     private void HandleDeath()
     {
         canAttack = false;
-        dieEffect.Play();
         GetComponent<Collider2D>().enabled = false;
         animator.SetTrigger("dead");
+        PlayHitParticle();
         StartCoroutine(DestroyEnemy(2));
     }
 
@@ -47,5 +46,11 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         Destroy(this.gameObject);
+    }
+    
+    private void PlayHitParticle()
+    {
+        ParticleSystem instantiatedParticle = Instantiate(hitParticle, transform.position, transform.rotation);
+        instantiatedParticle.Play();
     }
 }

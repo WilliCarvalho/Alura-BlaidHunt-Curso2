@@ -5,6 +5,7 @@ public class PlayerBehavior : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private float jumpForce = 3;
+    [SerializeField] private ParticleSystem hitParticle;
     
     [Header("Propriedades de ataque")]
     [SerializeField] private float attackRange = 1f;
@@ -22,7 +23,7 @@ public class PlayerBehavior : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         isGroundedCheker = GetComponent<IsGroundedChecker>();
         health = GetComponent<Health>();
-        health.OnHurt += PlayHurtAudio;
+        health.OnHurt += HandleHurt;
         health.OnDead += HandlePlayerDeath;
     }
 
@@ -62,13 +63,15 @@ public class PlayerBehavior : MonoBehaviour
         GameManager.Instance.AudioManager.PlaySFX(SFX.PlayerJump);
     }
 
-    private void PlayHurtAudio()
+    private void HandleHurt()
     {
         GameManager.Instance.AudioManager.PlaySFX(SFX.PlayerHurt);
+        PlayHitParticle();
     }
 
     private void HandlePlayerDeath()
     {
+        PlayHitParticle();
         GetComponent<Collider2D>().enabled = false;
         rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
         GameManager.Instance.AudioManager.PlaySFX(SFX.PlayerDeath);
@@ -94,6 +97,12 @@ public class PlayerBehavior : MonoBehaviour
     private void PlayWalkSound()
     {
         GameManager.Instance.AudioManager.PlaySFX(SFX.PlayerWalk);
+    }
+    
+    private void PlayHitParticle()
+    {
+        ParticleSystem instantiatedParticle = Instantiate(hitParticle, transform.position, transform.rotation);
+        instantiatedParticle.Play();
     }
 
     private void OnDrawGizmos()
