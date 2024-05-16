@@ -13,6 +13,7 @@ public class BossBehavior : MonoBehaviour
     private Transform playerPosition;
     private Rigidbody2D rigidbody;
     private Health health;
+    private Animator animator;
 
     private bool isFlipped = true;
     private bool canAttack = false;
@@ -23,8 +24,11 @@ public class BossBehavior : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         health = GetComponent<Health>();
+        animator = GetComponent<Animator>();
         playerPosition = GameManager.Instance.GetPlayer().transform;
-        
+
+        health.OnHurt += PlayHurtAnim;
+        health.OnDead += PlayDeadAnim;
         print($"Player position: {playerPosition}");
     }
 
@@ -81,6 +85,16 @@ public class BossBehavior : MonoBehaviour
         {
             colInfo.GetComponent<Health>().TakeDamage();
         }
+    }
+
+    private void PlayHurtAnim()
+    {
+        animator.SetTrigger("hurt");
+    }
+
+    private void PlayDeadAnim()
+    {
+        animator.SetTrigger("die");
     }
 
     public bool GetCanAttack()
