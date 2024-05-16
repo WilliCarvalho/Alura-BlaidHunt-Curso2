@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     
     [Header("Dynamic Game Objects")]
     [SerializeField] private GameObject bossDoor;
+    [FormerlySerializedAs("Player")] [SerializeField] private PlayerBehavior player;
 
     private int totalKeysAmount;
     private int keysLeftToCollect;
@@ -41,5 +43,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(bossDoor);
         }
+    }
+
+    public PlayerBehavior GetPlayer()
+    {
+        return player;
     }
 }
